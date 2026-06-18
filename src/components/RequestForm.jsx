@@ -19,32 +19,42 @@ export default function RequestForm({ initialValues, reviewers, onSubmit, submit
 
   return (
     <form onSubmit={handleSubmit} aria-label="request-form">
-      <label htmlFor="title">Title</label>
-      <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+      <div className="form-group">
+        <label htmlFor="title">Title</label>
+        <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Brief description of the request" required />
+      </div>
 
-      <label htmlFor="description">Description</label>
-      <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+      <div className="form-group">
+        <label htmlFor="description">Description</label>
+        <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Provide full details about this request..." required />
+      </div>
 
-      <label htmlFor="priority">Priority</label>
-      <select id="priority" value={priority} onChange={(e) => setPriority(e.target.value)}>
-        <option value="LOW">Low</option>
-        <option value="MEDIUM">Medium</option>
-        <option value="HIGH">High</option>
-      </select>
+      <div className="form-group">
+        <label htmlFor="priority">Priority</label>
+        <select id="priority" value={priority} onChange={(e) => setPriority(e.target.value)}>
+          <option value="LOW">Low</option>
+          <option value="MEDIUM">Medium</option>
+          <option value="HIGH">High</option>
+        </select>
+      </div>
 
-      <label htmlFor="reviewer">Reviewer</label>
-      <select id="reviewer" value={reviewerId} onChange={(e) => setReviewerId(e.target.value)} required>
-        <option value="">Select a reviewer</option>
-        {reviewers.map((reviewer) => (
-          <option key={reviewer.id} value={reviewer.id}>
-            {reviewer.name}
-          </option>
-        ))}
-      </select>
+      <div className="form-group">
+        <label htmlFor="reviewer">Assign Reviewer</label>
+        <select id="reviewer" value={reviewerId} onChange={(e) => setReviewerId(e.target.value)} required>
+          <option value="">Select a reviewer</option>
+          {reviewers.map((reviewer) => (
+            <option key={reviewer.id} value={reviewer.id}>
+              {reviewer.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      {error && <p role="alert">{error}</p>}
+      {error && <p className="form-error">{error}</p>}
 
-      <button type="submit">{submitLabel}</button>
+      <div className="form-actions">
+        <button type="submit" className="primary-button">{submitLabel}</button>
+      </div>
     </form>
   );
 }

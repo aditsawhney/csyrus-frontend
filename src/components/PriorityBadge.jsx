@@ -1,7 +1,7 @@
 const PRIORITY_STYLES = {
-  LOW: { backgroundColor: "#e0f2fe", color: "#075985" },
-  MEDIUM: { backgroundColor: "#ede9fe", color: "#5b21b6" },
-  HIGH: { backgroundColor: "#ffe4e6", color: "#9f1239" },
+  LOW:    { backgroundColor: "var(--color-low-bg)",    color: "var(--color-low)" },
+  MEDIUM: { backgroundColor: "var(--color-medium-bg)", color: "var(--color-medium)" },
+  HIGH:   { backgroundColor: "var(--color-high-bg)",   color: "var(--color-high)" },
 };
 
 export default function PriorityBadge({ priority }) {

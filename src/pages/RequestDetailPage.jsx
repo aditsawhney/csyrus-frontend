@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import PriorityBadge from "../components/PriorityBadge";
 import StatusBadge from "../components/StatusBadge";
 import { requestService } from "../services/requestService";
 import { formatDate } from "../utils/formatDate";
@@ -22,20 +23,30 @@ export default function RequestDetailPage() {
     navigate("/");
   };
 
-  if (error) return <p role="alert">{error}</p>;
-  if (!request) return <p>Loading...</p>;
+  if (error) return <div className="page"><p role="alert">{error}</p></div>;
+  if (!request) return <div className="page"><p style={{ color: "var(--color-text-muted)" }}>Loading...</p></div>;
 
   return (
     <div className="page">
-      <header>
+      <div className="page-header">
         <h1>{request.title}</h1>
-        <StatusBadge status={request.status} />
-      </header>
-      <p>{request.description}</p>
-      <p>Priority: {request.priority}</p>
-      <p>Submitted: {formatDate(request.created_at)}</p>
+        <div className="page-header__meta">
+          <StatusBadge status={request.status} />
+          <PriorityBadge priority={request.priority} />
+        </div>
+      </div>
 
-      {request.status === "PENDING" && <button onClick={handleDelete}>Delete Request</button>}
+      <p className="detail-body">{request.description}</p>
+
+      <div className="detail-meta">
+        <span><strong>Submitted:</strong> {formatDate(request.created_at)}</span>
+      </div>
+
+      {request.status === "PENDING" && (
+        <button className="danger-button" onClick={handleDelete}>
+          Delete Request
+        </button>
+      )}
     </div>
   );
 }

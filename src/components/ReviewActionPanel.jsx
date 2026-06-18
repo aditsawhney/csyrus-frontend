@@ -19,14 +19,21 @@ export default function ReviewActionPanel({ onApprove, onReject }) {
 
   return (
     <div className="review-panel">
-      <label htmlFor="comments">Comments</label>
-      <textarea id="comments" value={comments} onChange={(e) => setComments(e.target.value)} />
+      <div className="form-group">
+        <label htmlFor="comments">Comments</label>
+        <textarea
+          id="comments"
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
+          placeholder="Add a note explaining your decision..."
+        />
+      </div>
       {error && <p role="alert">{error}</p>}
       <div className="review-panel__actions">
-        <button disabled={submitting} onClick={() => handle(onApprove)}>
+        <button className="approve-button" disabled={submitting} onClick={() => handle(onApprove)}>
           Approve
         </button>
-        <button disabled={submitting} onClick={() => handle(onReject)}>
+        <button className="reject-button" disabled={submitting} onClick={() => handle(onReject)}>
           Reject
         </button>
       </div>
