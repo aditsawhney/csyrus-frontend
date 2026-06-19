@@ -11,9 +11,7 @@ export default function ReviewerDashboard() {
 
   const load = () => reviewerService.listAssigned().then(setRequests);
 
-  useEffect(() => {
-    load();
-  }, []);
+  useEffect(() => { load(); }, []);
 
   const handleApprove = async (comments) => {
     await reviewerService.approve(selected.id, comments);
@@ -31,24 +29,41 @@ export default function ReviewerDashboard() {
 
   return (
     <div className="dashboard">
-      <h1>Welcome, {user?.name}</h1>
+      <div className="dashboard__header">
+        <div>
+          <h1>Welcome, {user?.name}</h1>
+          <p>Review and action pending requests assigned to you.</p>
+        </div>
+      </div>
+
       <div className="reviewer-layout">
-        <section aria-label="pending-requests">
-          {pending.map((request) => (
-            <button key={request.id} className="request-row" onClick={() => setSelected(request)}>
-              <span>{request.title}</span>
-              <StatusBadge status={request.status} />
-            </button>
-          ))}
-          {pending.length === 0 && <p>No pending requests assigned to you.</p>}
-        </section>
+        <div>
+          <div className="section-heading">Pending Requests ({pending.length})</div>
+          <div className="reviewer-list" aria-label="pending-requests">
+            {pending.map((request) => (
+              <button
+                key={request.id}
+                className={`request-row ${selected?.id === request.id ? "active" : ""}`}
+                onClick={() => setSelected(request)}
+              >
+                <span className="request-row__title">{request.title}</span>
+                <StatusBadge status={request.status} />
+              </button>
+            ))}
+            {pending.length === 0 && (
+              <div className="empty-state">
+                <p>No pending requests assigned to you.</p>
+              </div>
+            )}
+          </div>
+        </div>
 
         {selected && (
-          <section aria-label="request-detail">
+          <div className="review-detail" aria-label="request-detail">
             <h2>{selected.title}</h2>
-            <p>{selected.description}</p>
+            <p className="review-detail__description">{selected.description}</p>
             <ReviewActionPanel onApprove={handleApprove} onReject={handleReject} />
-          </section>
+          </div>
         )}
       </div>
     </div>

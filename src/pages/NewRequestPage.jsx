@@ -18,8 +18,13 @@ export default function NewRequestPage() {
 
   return (
     <div className="page">
-      <h1>New Request</h1>
-      <RequestForm reviewers={reviewers} onSubmit={handleSubmit} submitLabel="Create Request" />
+      <div className="page-header">
+        <h1>New Request</h1>
+        <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", marginTop: "0.25rem" }}>
+          Fill in the details below and assign a reviewer.
+        </p>
+      </div>
+      <RequestForm reviewers={reviewers} onSubmit={handleSubmit} submitLabel="Submit Request" />
     </div>
   );
 }

@@ -7,11 +7,11 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar__brand">
-        Csyrus Approvals
+        <span>Csyrus</span> Approvals
       </Link>
       {user && (
         <div className="navbar__user">
-          <span>{user.name}</span>
+          <span className="navbar__user-name">{user.name}</span>
           <span className="navbar__role">{user.role}</span>
         </div>
       )}
