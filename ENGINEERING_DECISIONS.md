@@ -5,14 +5,14 @@
 Three layers, deliberately thin: `services/` wraps every backend call in a
 plain async function (no React inside it), `hooks/` adapts that into
 component-friendly state (`useAuth`, `useRequests`), and `components/` /
-`pages/` only render. A component never calls `axios` directly — it calls
+`pages/` only render. A component never calls `axios` directly - it calls
 a hook or a service function. This is what the brief means by "business
 logic separated from JSX," and it's also why the test suite can mock
 `services/reviewerService` for `ReviewerDashboard` without touching axios,
 React Router, or anything else.
 
 `AuthContext` holds exactly one thing: the current user (or `null`). It's
-populated once, on mount, by calling `GET /auth/me` — there's no client-side
+populated once, on mount, by calling `GET /auth/me` - there's no client-side
 token handling to get wrong, since the session lives in an httponly cookie
 the browser sends automatically.
 

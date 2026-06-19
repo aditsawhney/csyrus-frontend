@@ -3,11 +3,11 @@
 ## Assumptions made
 
 - The backend exposes `GET /requests/reviewers` so the "New Request" form
-  can populate its reviewer dropdown — this isn't in the original API
+  can populate its reviewer dropdown - this isn't in the original API
   spec; see the backend's `COLLABORATION.md` for the same note from that
   side.
 - A logged-in user's role is fixed at the account level (set by the
-  backend on first sign-in). The frontend doesn't offer a role switcher —
+  backend on first sign-in). The frontend doesn't offer a role switcher -
   if the backend ever supports one identity holding both roles, the
   routing in `AppRoutes.jsx` would need to change to a role-selector
   rather than a redirect.
@@ -19,13 +19,13 @@
 
 ## Known limitations
 
-- No client-side validation beyond HTML5 `required` attributes — field
+- No client-side validation beyond HTML5 `required` attributes - field
   length limits, for instance, are enforced by the backend's Pydantic
   schemas and surface only as a generic error message if violated.
 - No optimistic UI: every approve/reject or create/delete waits for the
   backend round-trip before updating the list.
 - No automated end-to-end test (e.g. Playwright/Cypress) covering the
-  real OAuth redirect — RTL component tests cover the UI logic, but the
+  real OAuth redirect - RTL component tests cover the UI logic, but the
   actual Google consent screen → callback → cookie flow is only verified
   manually and in the demo video.
 

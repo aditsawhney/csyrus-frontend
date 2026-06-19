@@ -1,8 +1,8 @@
-# Csyrus Workflow Approval Management System — Frontend
+# Csyrus Workflow Approval Management System - Frontend
 
 React + Vite frontend for the approval workflow tool. Talks to the FastAPI
 backend (`../backend`) over Axios, authenticates through Google OAuth (the
-backend owns the OAuth handshake — this app just redirects into it and
+backend owns the OAuth handshake - this app just redirects into it and
 reads the resulting session).
 
 ## Stack
@@ -27,7 +27,7 @@ frontend/
 ```
 
 Business logic (API calls, validation) lives in `services/` and `hooks/`,
-not inside JSX — components stay focused on rendering. See
+not inside JSX - components stay focused on rendering. See
 `ENGINEERING_DECISIONS.md` for more on this split.
 
 ## Setup
@@ -49,7 +49,7 @@ npm run dev
 
 Starts on `http://localhost:5173` by default. The backend must also be
 running (see `../backend/README.md`) since this app has no functionality
-without it — every page beyond the login screen requires an authenticated
+without it - every page beyond the login screen requires an authenticated
 session.
 
 ## Running tests
@@ -60,7 +60,7 @@ npm test
 
 Runs the Vitest suite once. Use `npm run test:watch` during development.
 Backend calls are mocked at the service layer (`vi.mock` on
-`services/*`) so the tests never hit a real network — see
+`services/*`) so the tests never hit a real network - see
 `ENGINEERING_DECISIONS.md` for the reasoning.
 
 ## Building for production
