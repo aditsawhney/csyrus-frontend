@@ -5,6 +5,6 @@ import LoginPage from "../src/pages/LoginPage";
 describe("LoginPage", () => {
   it("renders a Google sign-in link", () => {
     render(<LoginPage />);
-    expect(screen.getByText(/sign in with google/i)).toBeInTheDocument();
+    expect(screen.getByText(/continue with google/i)).toBeInTheDocument();
   });
 });

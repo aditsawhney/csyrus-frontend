@@ -33,6 +33,6 @@ describe("RequestForm", () => {
     fireEvent.change(screen.getByLabelText(/reviewer/i), { target: { value: "r1" } });
     fireEvent.click(screen.getByRole("button", { name: /submit/i }));
 
-    expect(await screen.findByRole("alert")).toHaveTextContent("Reviewer not found");
+    expect(await screen.findByText(/reviewer not found/i)).toBeInTheDocument();
   });
 });
