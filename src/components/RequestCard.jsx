@@ -4,10 +4,12 @@ import PriorityBadge from "./PriorityBadge";
 import StatusBadge from "./StatusBadge";
 
 export default function RequestCard({ request }) {
+  const priorityClass = request.priority?.toLowerCase();
+
   return (
-    <Link to={`/requests/${request.id}`} className="request-card">
+    <Link to={`/requests/${request.id}`} className={`request-card request-card--${priorityClass}`}>
       <div className="request-card__header">
-        <h3>{request.title}</h3>
+        <span className="request-card__title">{request.title}</span>
         <StatusBadge status={request.status} />
       </div>
       <p className="request-card__description">{request.description}</p>

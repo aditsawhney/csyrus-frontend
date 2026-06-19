@@ -1,7 +1,7 @@
 const STATUS_STYLES = {
-  PENDING: { backgroundColor: "#fef3c7", color: "#92400e" },
-  APPROVED: { backgroundColor: "#dcfce7", color: "#166534" },
-  REJECTED: { backgroundColor: "#fee2e2", color: "#991b1b" },
+  PENDING:  { backgroundColor: "var(--color-pending-bg)",  color: "var(--color-pending)" },
+  APPROVED: { backgroundColor: "var(--color-approved-bg)", color: "var(--color-approved)" },
+  REJECTED: { backgroundColor: "var(--color-rejected-bg)", color: "var(--color-rejected)" },
 };
 
 export default function StatusBadge({ status }) {
